@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lua Obfuscator V2 - Web Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Lua Obfuscator V2</h1>
+            <p class="subtitle">Advanced Lua Code Obfuscation Tool</p>
+        </header>
+
+        <main>
+            <div class="settings-panel">
+                <h2>Obfuscation Settings</h2>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="encryptStrings" checked>
+                        <span>Encrypt Strings</span>
+                    </label>
+                    <p class="setting-desc">Replace string literals with encrypted references</p>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="compressCode" checked>
+                        <span>Minify Code</span>
+                    </label>
+                    <p class="setting-desc">Remove whitespace and unnecessary characters</p>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="obfuscateVariables" checked>
+                        <span>Obfuscate Variables</span>
+                    </label>
+                    <p class="setting-desc">Rename variables to short meaningless names</p>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="removeComments" checked>
+                        <span>Remove Comments</span>
+                    </label>
+                    <p class="setting-desc">Strip all comments from the code</p>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="includeVM" checked>
+                        <span>Include VM Wrapper</span>
+                    </label>
+                    <p class="setting-desc">Wrap code in a virtual machine for additional protection</p>
+                </div>
+            </div>
+
+            <div class="editor-section">
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <h3>Input Lua Code</h3>
+                        <div class="editor-buttons">
+                            <button id="clearInput" class="btn-small">Clear</button>
+                            <button id="loadExample" class="btn-small">Load Example</button>
+                        </div>
+                    </div>
+                    <textarea id="inputCode" placeholder="Paste your Lua code here...">-- Simple Hello World
+print("Hello World")
+
+local function greet(name)
+    print("Hello, " .. name .. "!")
+end
+
+greet("Alice")</textarea>
+                </div>
+
+                <div class="editor-actions">
+                    <button id="obfuscateBtn" class="btn-primary">
+                        <span class="btn-icon">⚡</span> Obfuscate
+                    </button>
+                </div>
+
+                <div class="editor-container">
+                    <div class="editor-header">
+                        <h3>Obfuscated Output</h3>
+                        <div class="editor-buttons">
+                            <button id="copyOutput" class="btn-small">Copy</button>
+                            <button id="downloadOutput" class="btn-small">Download</button>
+                            <button id="clearOutput" class="btn-small">Clear</button>
+                        </div>
+                    </div>
+                    <textarea id="outputCode" placeholder="Obfuscated code will appear here..." readonly></textarea>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <span class="stat-label">Input Size</span>
+                    <span class="stat-value" id="inputSize">0</span>
+                    <span class="stat-unit">bytes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Output Size</span>
+                    <span class="stat-value" id="outputSize">0</span>
+                    <span class="stat-unit">bytes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Compression</span>
+                    <span class="stat-value" id="compressionRatio">0%</span>
+                    <span class="stat-unit">reduction</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Processing Time</span>
+                    <span class="stat-value" id="processingTime">0</span>
+                    <span class="stat-unit">ms</span>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>About This Tool</h3>
+                <p>This Lua Obfuscator provides multiple layers of protection:</p>
+                <ul>
+                    <li><strong>String Encryption:</strong> Extracts and encrypts string literals</li>
+                    <li><strong>Variable Obfuscation:</strong> Renames variables to meaningless names</li>
+                    <li><strong>Code Minification:</strong> Removes unnecessary whitespace and formatting</li>
+                    <li><strong>VM Wrapping:</strong> Optionally wraps code in a virtual machine interpreter</li>
+                    <li><strong>Comment Removal:</strong> Strips documentation and comments</li>
+                </ul>
+                <p class="warning">⚠️ <strong>Important:</strong> This tool provides obfuscation for security through obscurity. For critical security requirements, consider additional measures.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Lua Obfuscator V2 - Web Edition | <a href="https://github.com/PY44N/LuaObfuscatorV2" target="_blank">GitHub</a></p>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="obfuscator.js"></script>
+</body>
+</html>
